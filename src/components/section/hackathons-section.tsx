@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import { DATA } from "@/data/resume";
 import { Timeline, TimelineItem, TimelineConnectItem } from "@/components/timeline";
+import { ArrowUpRight } from "lucide-react";
 
 export default function HackathonsSection() {
   return (
@@ -12,16 +13,15 @@ export default function HackathonsSection() {
           <div className="flex items-center w-full">
             <div className="flex-1 h-px bg-linear-to-r from-transparent from-5% via-border via-95% to-transparent" />
             <div className="border bg-primary z-10 rounded-xl px-4 py-1">
-              <span className="text-background text-sm font-medium">Hackathons</span>
+              <span className="text-background text-sm font-medium">Open Source Contributions </span>
             </div>
             <div className="flex-1 h-px bg-linear-to-l from-transparent from-5% via-border via-95% to-transparent" />
           </div>
           <div className="flex flex-col gap-y-3 items-center justify-center">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">I like building things</h2>
+            {/* <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">I like building things</h2> */}
             <p className="text-muted-foreground md:text-lg/relaxed lg:text-base/relaxed xl:text-lg/relaxed text-balance text-center">
-              During my time in university, I attended {DATA.hackathons.length}+
-              hackathons. People from around the country would come together and
-              build incredible things in 2-3 days. It was eye-opening to see the endless possibilities brought to life by a group of motivated and passionate individuals.
+            While Learning i've thought to contribute to Open Source Projects which eventually taught me a lot
+            Currently i've contributed to {DATA.hackathons.length} projects and thinking to contribute more
             </p>
           </div>
         </div>
@@ -44,10 +44,15 @@ export default function HackathonsSection() {
                   <time className="text-xs text-muted-foreground">{hackathon.dates}</time>
                 )}
                 {hackathon.title && (
-                  <h3 className="font-semibold leading-none">{hackathon.title}</h3>
+                  <a href={hackathon.website} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 group">
+                    <h3 className="font-semibold leading-none">{hackathon.title}</h3>
+                    <ArrowUpRight className="h-3.5 w-3.5 text-muted-foreground opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" aria-hidden />
+                  </a>
                 )}
-                {hackathon.location && (
-                  <p className="text-sm text-muted-foreground">{hackathon.location}</p>
+                {hackathon.repository && (
+                  <a href={hackathon.repoUrl} target="_blank" rel="noopener noreferrer"   className="flex items-center gap-2 group hover:underline">
+                    <p className="text-sm text-muted-foreground">{hackathon.repository}</p>
+                  </a>
                 )}
                 {hackathon.description && (
                   <p className="text-sm text-muted-foreground leading-relaxed wrap-break-word">
