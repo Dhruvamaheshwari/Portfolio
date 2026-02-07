@@ -81,12 +81,12 @@ export const DATA = {
 
         navbar: true,
       },
-      Youtube: {
-        name: "Youtube",
-        url: "https://dub.sh/dillion-youtube",
-        icon: Icons.youtube,
-        navbar: true,
-      },
+      // Youtube: {
+      //   name: "Youtube",
+      //   url: "https://dub.sh/dillion-youtube",
+      //   icon: Icons.youtube,
+      //   navbar: true,
+      // },
       email: {
         name: "Send Email",
         url: "#",
@@ -349,17 +349,22 @@ export const DATA = {
         },
         {
           title: "PR Link",
-          href: "https://github.com/lingdojo/kana-dojo/pull/176",
+          href: "https://github.com/lingdojo/kana-dojo/pull/177",
           icon: <Icons.github className="size-3" />,
         },
         {
           title: "PR Link",
-          href: "https://github.com/lingdojo/kana-dojo/pull/176",
+          href: "https://github.com/lingdojo/kana-dojo/pull/180",
           icon: <Icons.github className="size-3" />,
         },
         {
           title: "PR Link",
-          href: "https://github.com/lingdojo/kana-dojo/pull/176",
+          href: "https://github.com/lingdojo/kana-dojo/pull/192",
+          icon: <Icons.github className="size-3" />,
+        },
+        {
+          title: "PR Link",
+          href: "https://github.com/lingdojo/kana-dojo/pull/194",
           icon: <Icons.github className="size-3" />,
         },
       ],
