@@ -250,7 +250,8 @@
 
 ::view-transition-new(root) {
   clip-path: circle(0% at var(--x, 50%) var(--y, 50%));
-  animation: ripple-wave 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: ripple-wave 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  will-change: clip-path, filter;
 }
 
 ::view-transition-old(root) {
@@ -259,7 +260,8 @@
 }
 
 .dark::view-transition-new(root) {
-  animation: ripple-wave 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: ripple-wave 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  will-change: clip-path, filter;
 }
 
 @keyframes ripple-wave {
@@ -267,29 +269,17 @@
     clip-path: circle(0% at var(--x) var(--y));
     filter: blur(0px);
   }
-  10% {
-    clip-path: circle(8% at var(--x) var(--y));
-    filter: blur(6px);
-  }
-  20% {
-    clip-path: circle(20% at var(--x) var(--y));
-    filter: blur(10px);
-  }
-  35% {
-    clip-path: circle(40% at var(--x) var(--y));
-    filter: blur(8px);
+  25% {
+    clip-path: circle(25% at var(--x) var(--y));
+    filter: blur(4px);
   }
   50% {
-    clip-path: circle(60% at var(--x) var(--y));
-    filter: blur(5px);
+    clip-path: circle(50% at var(--x) var(--y));
+    filter: blur(6px);
   }
-  70% {
+  75% {
     clip-path: circle(100% at var(--x) var(--y));
     filter: blur(3px);
-  }
-  85% {
-    clip-path: circle(150% at var(--x) var(--y));
-    filter: blur(1px);
   }
   100% {
     clip-path: circle(200% at var(--x) var(--y));
@@ -311,7 +301,8 @@
   border-radius: 50%;
   border: 2px solid;
   transform: translate(-50%, -50%);
-  animation: ring-expand 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: ring-expand 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  will-change: width, height, opacity, border-width;
   opacity: 0;
 }
 
@@ -335,8 +326,8 @@
     border-width: 2px;
   }
   100% {
-    width: 400vmax;
-    height: 400vmax;
+    width: 200vmax;
+    height: 200vmax;
     opacity: 0;
     border-width: 1px;
   }

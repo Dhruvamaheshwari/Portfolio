@@ -14,8 +14,8 @@ function createRippleRings(x: number, y: number, isDarkToLight: boolean) {
   container.className = "ripple-container";
 
   // Create multiple rings with staggered delays for wave effect
-  const ringCount = 5;
-  const delayStep = 120; // ms between each ring
+  const ringCount = 3;
+  const delayStep = 100; // ms between each ring
 
   for (let i = 0; i < ringCount; i++) {
     const ring = document.createElement("div");
@@ -31,7 +31,7 @@ function createRippleRings(x: number, y: number, isDarkToLight: boolean) {
   // Remove container after animation completes
   setTimeout(() => {
     container.remove();
-  }, 2500);
+  }, 2000);
 }
 
 export function ModeToggle({ className }: { className?: string }) {
