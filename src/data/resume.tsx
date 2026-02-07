@@ -12,6 +12,12 @@ import { Kubernetes } from "@/components/ui/svgs/kubernetes";
 import { Java } from "@/components/ui/svgs/java";
 import { Csharp } from "@/components/ui/svgs/csharp";
 import { Express } from "@/components/ui/svgs/express";
+import { Tailwind } from "@/components/ui/svgs/tailwind";
+import { Prisma } from "@/components/ui/svgs/prisma";
+import { RestAPIs } from "@/components/ui/svgs/restAPIs";
+import { JWT } from "@/components/ui/svgs/jwt";
+import { MongoDB } from "@/components/ui/svgs/mongoDB";
+import { Solana } from "@/components/ui/svgs/solona";
 
 export const DATA = {
   name: "Dhruva Maheshwari",
@@ -37,6 +43,12 @@ export const DATA = {
     // { name: "Java", icon: Java },
     { name: "C++", icon: Csharp },
     { name: "Express", icon: Express },
+    { name: "Tailwind", icon: Tailwind },
+    { name: "Prisma", icon: Prisma },
+    { name: "RestAPIs", icon: RestAPIs },
+    { name: "JWT", icon: JWT },
+    { name: "MongoDB", icon: MongoDB },
+    { name: "Solana", icon: Solana },
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
