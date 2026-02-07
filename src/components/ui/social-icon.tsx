@@ -1,51 +1,38 @@
+/** @format */
+
 "use client";
 
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import React from "react";
 
 interface SocialIconProps {
-    icon: React.ReactNode;
-    username: string;
-    link: string;
+  icon: React.ReactNode;
+  username: string;
+  link: string;
 }
 
 export function SocialIcon({ icon, username, link }: SocialIconProps) {
-    const [isHovered, setIsHovered] = useState(false);
+  return (
+    <a
+      href={link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group inline-block">
+      <div className="relative flex items-center h-10 rounded-lg cursor-pointer bg-background border border-border overflow-hidden transition-all duration-300 ease-out w-12 group-hover:w-36 active:scale-[0.98]">
+        {/* Hover background */}
+        <div className="absolute inset-0 bg-accent/50 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
 
-    return (
-        <a
-            href={link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block"
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-        >
-            <motion.div
-                className="flex items-center justify-center px-3 py-2 rounded-lg cursor-pointer h-10 bg-background border border-border/40 hover:bg-accent/10 shadow-xs"
-                initial={{ width: "3rem" }}
-                animate={{ width: isHovered ? "auto" : "3rem" }}
-                transition={{ type: "spring", stiffness: 350, damping: 25, mass: 0.8 }}
-                style={{ overflow: "hidden", whiteSpace: "nowrap" }}
-            >
-                <div className="flex items-center justify-center shrink-0 w-6 h-6 text-muted-foreground">
-                    {icon}
-                </div>
+        {/* Icon container */}
+        <div className="relative z-10 flex items-center justify-center shrink-0 w-12 h-full">
+          <div className="flex items-center justify-center text-muted-foreground transition-transform duration-200 group-hover:scale-110">
+            {icon}
+          </div>
+        </div>
 
-                <AnimatePresence>
-                    {isHovered && (
-                        <motion.span
-                            className="ml-2 text-sm font-medium text-foreground"
-                            initial={{ opacity: 0, width: 0 }}
-                            animate={{ opacity: 1, width: "auto" }}
-                            exit={{ opacity: 0, width: 0 }}
-                            transition={{ duration: 0.15, ease: "easeOut" }}
-                        >
-                            {username}
-                        </motion.span>
-                    )}
-                </AnimatePresence>
-            </motion.div>
-        </a>
-    );
+        {/* Username text */}
+        <span className="relative z-10 text-sm font-medium text-foreground whitespace-nowrap pr-3 -ml-1 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 delay-75">
+          {username}
+        </span>
+      </div>
+    </a>
+  );
 }
