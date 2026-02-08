@@ -14,48 +14,75 @@ const Ripple = ({
   x,
   y,
   onComplete,
+  onThemeSwitch,
 }: {
   x: number;
   y: number;
   onComplete: () => void;
+  onThemeSwitch: () => void;
 }) => {
+  useEffect(() => {
+    // Sync theme switch with the animation's peak (approx 400ms)
+    const timer = setTimeout(() => {
+      onThemeSwitch();
+    }, 400);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="fixed inset-0 z-[9999] overflow-hidden pointer-events-none">
-      {/* Background Blur Wipe */}
+      {/* Background Blur Wipe - Blue Tint */}
       <motion.div
-        initial={{ clipPath: `circle(0px at ${x}px ${y}px)` }}
-        animate={{ clipPath: `circle(300vmax at ${x}px ${y}px)` }}
-        transition={{ duration: 1, ease: "circOut" }}
+        initial={{
+          clipPath: `circle(0px at ${x}px ${y}px)`,
+          backdropFilter: "blur(0px)",
+          backgroundColor: "rgba(59, 130, 246, 0.0)",
+        }}
+        animate={{
+          clipPath: `circle(300vmax at ${x}px ${y}px)`,
+          // Animate blur and color: Start -> Peak (Hide switch) -> End (Clear)
+          backdropFilter: ["blur(0px)", "blur(12px)", "blur(0px)"],
+          backgroundColor: [
+            "rgba(59, 130, 246, 0.0)",
+            "rgba(59, 130, 246, 0.15)", // Peak Blue Tint
+            "rgba(59, 130, 246, 0.0)",
+          ],
+        }}
+        transition={{
+          clipPath: { duration: 1.5, ease: "circOut" },
+          backdropFilter: { duration: 1.5, times: [0, 0.3, 1] },
+          backgroundColor: { duration: 1.5, times: [0, 0.3, 1] },
+        }}
         style={{
           position: "absolute",
           inset: 0,
           zIndex: 10,
-          backdropFilter: "blur(6px)",
         }}
+        onAnimationComplete={onComplete}
       />
 
-      {/* Expanding Rings */}
-      {[0, 1, 2, 3].map((i) => (
+      {/* Expanding Blue Rings */}
+      {[0, 1].map((i) => (
         <motion.div
           key={i}
           initial={{
             width: 0,
             height: 0,
-            opacity: 0.5,
-            borderWidth: "5px",
+            opacity: 0.8,
+            borderWidth: "2px",
             x: "-50%",
             y: "-50%",
           }}
           animate={{
-            width: "200vmax",
-            height: "200vmax",
+            width: "250vmax",
+            height: "250vmax",
             opacity: 0,
-            borderWidth: "1px",
+            borderWidth: "0px",
           }}
           transition={{
-            duration: 1.5,
-            ease: "easeOut",
-            delay: i * 0.1,
+            duration: 1.2,
+            ease: "circOut",
+            delay: i * 0.15,
           }}
           style={{
             position: "absolute",
@@ -63,11 +90,9 @@ const Ripple = ({
             left: x,
             borderRadius: "50%",
             borderStyle: "solid",
-            borderColor: "var(--foreground)",
+            borderColor: "#3b82f6", // Electric Blue
+            boxShadow: "0 0 20px rgba(59, 130, 246, 0.5)", // Blue Glow
             zIndex: 20,
-          }}
-          onAnimationComplete={() => {
-            if (i === 3) onComplete();
           }}
         />
       ))}
@@ -89,7 +114,6 @@ export function ModeToggle({ className }: { className?: string }) {
   }, []);
 
   const toggleTheme = () => {
-    // 🔑 Get position for ripple
     const button = buttonRef.current;
     let x = window.innerWidth / 2;
     let y = window.innerHeight / 2;
@@ -101,7 +125,6 @@ export function ModeToggle({ className }: { className?: string }) {
     }
 
     setRipple({ x, y });
-    setTheme(theme === "dark" ? "light" : "dark");
   };
 
   return (
@@ -123,6 +146,7 @@ export function ModeToggle({ className }: { className?: string }) {
           <Ripple
             x={ripple.x}
             y={ripple.y}
+            onThemeSwitch={() => setTheme(theme === "dark" ? "light" : "dark")}
             onComplete={() => setRipple(null)}
           />,
           document.body,

@@ -64,7 +64,7 @@ export const DATA = {
       GitHub: {
         username: "Dhruva ",
         name: "GitHub",
-        url: "https://dub.sh/dillion-github",
+        url: "https://github.com/Dhruvamaheshwari",
         icon: Icons.github,
         navbar: true,
       },
@@ -72,7 +72,7 @@ export const DATA = {
       LinkedIn: {
         username: "Dhruva ",
         name: "LinkedIn",
-        url: "https://dub.sh/dillion-linkedin",
+        url: "https://www.linkedin.com/in/dhruva-maheshwari47/",
         icon: Icons.linkedin,
 
         navbar: true,
@@ -80,7 +80,7 @@ export const DATA = {
       X: {
         username: "Dhruva ",
         name: "X",
-        url: "https://dub.sh/dillion-twitter",
+        url: "https://x.com/maheshwari4747  ",
         icon: Icons.x,
 
         navbar: true,
@@ -94,9 +94,8 @@ export const DATA = {
       email: {
         username: "Dhruva ",
         name: "Send Email",
-        url: "#",
+        url: "maheshwaridhruva0@gmail.com",
         icon: Icons.email,
-
         navbar: false,
       },
     },

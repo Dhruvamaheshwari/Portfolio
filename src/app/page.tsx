@@ -17,6 +17,7 @@ import WorkSection from "@/components/section/work-section";
 import { ArrowUpRight } from "lucide-react";
 import { SocialIcon } from "@/components/ui/social-icon";
 import { AnimatedName } from "@/components/ui/animated-name";
+import { LargeNameFooter } from "@/components/ui/large-name-footer";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -107,7 +108,7 @@ export default function Page() {
         </BlurFade>
       </section>
 
-      <section id="work">
+      {/* <section id="work">
         <div className="flex min-h-0 flex-col gap-y-6">
           <BlurFade delay={BLUR_FADE_DELAY * 5}>
             <h2 className="text-xl font-bold">Work Experience</h2>
@@ -116,9 +117,9 @@ export default function Page() {
             <WorkSection />
           </BlurFade>
         </div>
-      </section>
+      </section> */}
 
-      <section id="education">
+      {/* <section id="education">
         <div className="flex min-h-0 flex-col gap-y-6">
           <BlurFade delay={BLUR_FADE_DELAY * 7}>
             <h2 className="text-xl font-bold">Education</h2>
@@ -135,9 +136,7 @@ export default function Page() {
                   className="flex items-center gap-x-3 justify-between group">
                   <div className="flex items-center gap-x-3 flex-1 min-w-0">
                     {education.logoUrl ?
-                      <img
-                        src={education.logoUrl}
-                        alt={education.school}
+                      <img src={education.logoUrl} alt={education.school}
                         className="size-8 md:size-10 p-1 border rounded-full shadow ring-2 ring-border overflow-hidden object-contain flex-none"
                       />
                     : <div className="size-8 md:size-10 p-1 border rounded-full shadow ring-2 ring-border bg-muted flex-none" />
@@ -165,11 +164,17 @@ export default function Page() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section id="contact">
         <BlurFade delay={BLUR_FADE_DELAY * 16}>
           <ContactSection />
+        </BlurFade>
+      </section>
+
+      <section id="footer">
+        <BlurFade delay={BLUR_FADE_DELAY * 17}>
+          <LargeNameFooter />
         </BlurFade>
       </section>
     </main>
