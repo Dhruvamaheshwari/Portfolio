@@ -9,7 +9,6 @@ import { useRef, useState, useEffect } from "react";
 import { motion } from "motion/react";
 import { createPortal } from "react-dom";
 
-// Ripple component using motion
 const Ripple = ({
   x,
   y,
@@ -22,80 +21,45 @@ const Ripple = ({
   onThemeSwitch: () => void;
 }) => {
   useEffect(() => {
-    // Sync theme switch with the animation's peak (approx 400ms)
     const timer = setTimeout(() => {
       onThemeSwitch();
-    }, 400);
+    }, 900);
     return () => clearTimeout(timer);
   }, []);
 
   return (
     <div className="fixed inset-0 z-[9999] overflow-hidden pointer-events-none">
-      {/* Background Blur Wipe - Blue Tint */}
       <motion.div
         initial={{
-          clipPath: `circle(0px at ${x}px ${y}px)`,
-          backdropFilter: "blur(0px)",
-          backgroundColor: "rgba(59, 130, 246, 0.0)",
+          width: 0,
+          height: 0,
+          opacity: 0,
         }}
         animate={{
-          clipPath: `circle(300vmax at ${x}px ${y}px)`,
-          // Animate blur and color: Start -> Peak (Hide switch) -> End (Clear)
-          backdropFilter: ["blur(0px)", "blur(12px)", "blur(0px)"],
-          backgroundColor: [
-            "rgba(59, 130, 246, 0.0)",
-            "rgba(59, 130, 246, 0.15)", // Peak Blue Tint
-            "rgba(59, 130, 246, 0.0)",
-          ],
+          width: "250vmax",
+          height: "250vmax",
+          opacity: [0, 1, 1, 0],
         }}
         transition={{
-          clipPath: { duration: 1.5, ease: "circOut" },
-          backdropFilter: { duration: 1.5, times: [0, 0.3, 1] },
-          backgroundColor: { duration: 1.5, times: [0, 0.3, 1] },
+          duration: 1.5,
+          ease: "easeInOut",
+          times: [0, 0.1, 0.8, 1],
         }}
         style={{
           position: "absolute",
-          inset: 0,
+          top: y,
+          left: x,
+          transform: "translate(-50%, -50%)",
+          borderRadius: "50%",
+          backgroundColor: "rgba(59, 130, 246, 0.1)",
+          backdropFilter: "blur(12px)",
+          maskImage: "radial-gradient(circle, black 30%, transparent 70%)",
+          WebkitMaskImage:
+            "radial-gradient(circle, black 30%, transparent 70%)",
           zIndex: 10,
         }}
         onAnimationComplete={onComplete}
       />
-
-      {/* Expanding Blue Rings */}
-      {[0, 1].map((i) => (
-        <motion.div
-          key={i}
-          initial={{
-            width: 0,
-            height: 0,
-            opacity: 0.8,
-            borderWidth: "2px",
-            x: "-50%",
-            y: "-50%",
-          }}
-          animate={{
-            width: "250vmax",
-            height: "250vmax",
-            opacity: 0,
-            borderWidth: "0px",
-          }}
-          transition={{
-            duration: 1.2,
-            ease: "circOut",
-            delay: i * 0.15,
-          }}
-          style={{
-            position: "absolute",
-            top: y,
-            left: x,
-            borderRadius: "50%",
-            borderStyle: "solid",
-            borderColor: "#3b82f6", // Electric Blue
-            boxShadow: "0 0 20px rgba(59, 130, 246, 0.5)", // Blue Glow
-            zIndex: 20,
-          }}
-        />
-      ))}
     </div>
   );
 };
