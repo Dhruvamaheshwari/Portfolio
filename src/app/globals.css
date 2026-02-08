@@ -120,6 +120,10 @@
 
   body {
     @apply bg-background text-foreground;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease,
+      border-color 0.3s ease;
   }
 
   /* Shiki dual theme support */
@@ -234,101 +238,5 @@
 
   .prose :where(tbody tr:last-child td):not(:where([class~="not-prose"] *)) {
     @apply border-b-0;
-  }
-}
-
-/* View Transition for theme toggle - water ripple wave effect */
-::view-transition-group(root) {
-  animation-duration: 1.8s;
-}
-
-::view-transition-new(root),
-::view-transition-old(root) {
-  mix-blend-mode: normal;
-  animation: none;
-}
-
-::view-transition-new(root) {
-  clip-path: circle(0% at var(--x, 50%) var(--y, 50%));
-  animation: ripple-wave 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  will-change: clip-path, filter;
-}
-
-::view-transition-old(root) {
-  animation: none;
-  z-index: -1;
-}
-
-.dark::view-transition-new(root) {
-  animation: ripple-wave 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  will-change: clip-path, filter;
-}
-
-@keyframes ripple-wave {
-  0% {
-    clip-path: circle(0% at var(--x) var(--y));
-    filter: blur(0px);
-  }
-  25% {
-    clip-path: circle(25% at var(--x) var(--y));
-    filter: blur(4px);
-  }
-  50% {
-    clip-path: circle(50% at var(--x) var(--y));
-    filter: blur(6px);
-  }
-  75% {
-    clip-path: circle(100% at var(--x) var(--y));
-    filter: blur(3px);
-  }
-  100% {
-    clip-path: circle(200% at var(--x) var(--y));
-    filter: blur(0px);
-  }
-}
-
-/* Ripple wave rings overlay */
-.ripple-container {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 9999;
-  overflow: hidden;
-}
-
-.ripple-ring {
-  position: absolute;
-  border-radius: 50%;
-  border: 2px solid;
-  transform: translate(-50%, -50%);
-  animation: ring-expand 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  will-change: width, height, opacity, border-width;
-  opacity: 0;
-}
-
-.ripple-ring.light-to-dark {
-  border-color: rgba(0, 0, 0, 0.15);
-}
-
-.ripple-ring.dark-to-light {
-  border-color: rgba(255, 255, 255, 0.2);
-}
-
-@keyframes ring-expand {
-  0% {
-    width: 0;
-    height: 0;
-    opacity: 0.8;
-    border-width: 3px;
-  }
-  50% {
-    opacity: 0.4;
-    border-width: 2px;
-  }
-  100% {
-    width: 200vmax;
-    height: 200vmax;
-    opacity: 0;
-    border-width: 1px;
   }
 }
