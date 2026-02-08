@@ -1,3 +1,5 @@
+/** @format */
+
 "use client";
 
 import { useEffect, useState } from "react";
@@ -40,31 +42,29 @@ export function WorkStatus() {
     <motion.div
       className="relative flex items-center justify-center"
       onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
-    >
+      onHoverEnd={() => setIsHovered(false)}>
       <motion.div
         layout
         className={cn(
           "flex items-center overflow-hidden rounded-full border bg-background/80 backdrop-blur-md shadow-sm transition-colors",
-          isHovered ? "pl-2 pr-4 py-1.5 gap-3" : "p-2"
+          isHovered ? "pl-2 pr-4 py-1.5 gap-3" : "p-2",
         )}
         initial={{ width: "auto" }}
         animate={{
           width: "auto",
-        }}
-      >
+        }}>
         {/* Status Dot */}
         <div className="relative flex h-3 w-3 items-center justify-center">
           <span
             className={cn(
               "absolute inline-flex h-full w-full animate-ping rounded-full opacity-75",
-              isOnline ? "bg-green-500" : "bg-zinc-500"
+              isOnline ? "bg-green-500" : "bg-zinc-500",
             )}
           />
           <span
             className={cn(
               "relative inline-flex h-2.5 w-2.5 rounded-full",
-              isOnline ? "bg-green-500" : "bg-zinc-500"
+              isOnline ? "bg-green-500" : "bg-zinc-500",
             )}
           />
         </div>
@@ -77,8 +77,7 @@ export function WorkStatus() {
               animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
               exit={{ opacity: 0, x: -10, filter: "blur(4px)" }}
               transition={{ duration: 0.2 }}
-              className="flex flex-col whitespace-nowrap text-xs leading-tight"
-            >
+              className="flex flex-col whitespace-nowrap text-xs leading-tight">
               <span className="font-medium text-foreground">
                 {isOnline ? "Coding in" : "Offline in"}{" "}
                 <span className="text-primary">{data.editor}</span>
