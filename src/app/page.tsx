@@ -35,15 +35,15 @@ export default function Page() {
         <div className="mx-auto w-full max-w-2xl space-y-8">
           <div className="gap-2 gap-y-6 flex flex-col md:flex-row justify-between">
             <div className="gap-2 flex flex-col order-2 md:order-1">
-              <BlurFade delay={BLUR_FADE_DELAY}>
+              <BlurFade delay={1.2 + BLUR_FADE_DELAY}>
                 <AnimatedName className="text-3xl font-semibold tracking-tighter sm:text-4xl lg:text-5xl" />
               </BlurFade>
               <BlurFadeText
                 className="text-muted-foreground max-w-[600px] md:text-lg lg:text-xl"
-                delay={BLUR_FADE_DELAY}
+                delay={1.2 + BLUR_FADE_DELAY}
                 text={DATA.description}
               />
-              <BlurFade delay={BLUR_FADE_DELAY}>
+              <BlurFade delay={1.2 + BLUR_FADE_DELAY}>
                 <div className="flex flex-wrap gap-2 mt-2">
                   {Object.values(DATA.contact.social).map((social) => (
                     <SocialIcon
@@ -55,7 +55,7 @@ export default function Page() {
                   ))}
                 </div>
               </BlurFade>
-              <BlurFade delay={BLUR_FADE_DELAY}>
+              <BlurFade delay={1.2 + BLUR_FADE_DELAY}>
                 <div className="mt-4 relative inline-block">
                   <Link
                     href="/resume.pdf"
@@ -94,7 +94,7 @@ export default function Page() {
                 </div>
               </BlurFade>
             </div>
-            <BlurFade delay={BLUR_FADE_DELAY} className="order-1 md:order-2">
+            <BlurFade delay={1.2 + BLUR_FADE_DELAY} className="order-1 md:order-2">
               <Avatar className="size-24 md:size-32 border rounded-full shadow-lg ring-4 ring-muted">
                 <AvatarImage alt={DATA.name} src={DATA.avatarUrl} />
                 <AvatarFallback>{DATA.initials}</AvatarFallback>
@@ -106,10 +106,10 @@ export default function Page() {
 
       <section id="about">
         <div className="flex min-h-0 flex-col gap-y-4">
-          <BlurFade delay={BLUR_FADE_DELAY * 3}>
+          <BlurFade delay={1.2 + BLUR_FADE_DELAY * 3}>
             <h2 className="text-xl font-bold">About</h2>
           </BlurFade>
-          <BlurFade delay={BLUR_FADE_DELAY * 4}>
+          <BlurFade delay={1.2 + BLUR_FADE_DELAY * 4}>
             <div className="prose max-w-full text-pretty font-sans leading-relaxed text-muted-foreground dark:prose-invert">
               <Markdown>{DATA.summary}</Markdown>
             </div>
@@ -118,7 +118,7 @@ export default function Page() {
       </section>
 
       <section id="projects">
-        <BlurFade delay={BLUR_FADE_DELAY * 11}>
+        <BlurFade delay={1.2 + BLUR_FADE_DELAY * 11}>
           <ProjectsSection />
         </BlurFade>
         <CodingDetail />
@@ -126,7 +126,7 @@ export default function Page() {
 
       <section id="skills">
         <div className="flex min-h-0 flex-col gap-y-4">
-          <BlurFade delay={BLUR_FADE_DELAY * 9}>
+          <BlurFade delay={1.2 + BLUR_FADE_DELAY * 9}>
             <h2 className="text-xl font-bold">Skills</h2>
           </BlurFade>
           <div className="relative flex w-full flex-col items-center justify-center overflow-hidden py-2 gap-4">
@@ -169,21 +169,21 @@ export default function Page() {
       </section>
 
       <section id="hackathons">
-        <BlurFade delay={BLUR_FADE_DELAY * 13}>
+        <BlurFade delay={1.2 + BLUR_FADE_DELAY * 13}>
           <HackathonsSection />
         </BlurFade>
       </section>
 
       <section id="education">
         <div className="flex min-h-0 flex-col gap-y-6">
-          <BlurFade delay={BLUR_FADE_DELAY * 14}>
+          <BlurFade delay={1.2 + BLUR_FADE_DELAY * 14}>
             <h2 className="text-xl font-bold">Education</h2>
           </BlurFade>
           <div className="flex flex-col gap-8">
             {DATA.education.map((education, index) => (
               <BlurFade
                 key={education.school}
-                delay={BLUR_FADE_DELAY * 15 + index * 0.05}>
+                delay={1.2 + BLUR_FADE_DELAY * 15 + index * 0.05}>
                 <Link
                   href={education.href}
                   target="_blank"
@@ -235,23 +235,23 @@ export default function Page() {
 
       {/* <section id="work">
         <div className="flex min-h-0 flex-col gap-y-6">
-          <BlurFade delay={BLUR_FADE_DELAY * 5}>
+          <BlurFade delay={1.2 + BLUR_FADE_DELAY * 5}>
             <h2 className="text-xl font-bold">Work Experience</h2>
           </BlurFade>
-          <BlurFade delay={BLUR_FADE_DELAY * 6}>
+          <BlurFade delay={1.2 + BLUR_FADE_DELAY * 6}>
             <WorkSection />
           </BlurFade>
         </div>
       </section> */}
 
       <section id="contact">
-        <BlurFade delay={BLUR_FADE_DELAY * 16}>
+        <BlurFade delay={1.2 + BLUR_FADE_DELAY * 16}>
           <ContactSection />
         </BlurFade>
       </section>
 
       <section id="footer">
-        <BlurFade delay={BLUR_FADE_DELAY * 17}>
+        <BlurFade delay={1.2 + BLUR_FADE_DELAY * 17}>
           <LargeNameFooter />
         </BlurFade>
       </section>
