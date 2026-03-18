@@ -1,3 +1,5 @@
+/** @format */
+
 import Navbar from "@/components/navbar";
 import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -7,7 +9,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { FlickeringGrid } from "@/components/magicui/flickering-grid";
-import { WorkStatus } from "@/components/ui/work-status";
+import { TopStatus } from "@/components/ui/top-status";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -68,16 +70,10 @@ export default function RootLayout({
         className={cn(
           "min-h-screen bg-background font-sans antialiased relative",
           geist.variable,
-          geistMono.variable
-        )}
-      >
-        <ThemeProvider attribute="class" defaultTheme="light">
+          geistMono.variable,
+        )}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <TooltipProvider delayDuration={0}>
-            {/* Work Status Widget */}
-            <div className="fixed top-4 left-4 z-50">
-              <WorkStatus />
-            </div>
-
             <div className="absolute inset-0 top-0 left-0 right-0 h-[100px] overflow-hidden z-0">
               <FlickeringGrid
                 className="h-full w-full"
@@ -85,7 +81,8 @@ export default function RootLayout({
                 gridGap={2}
                 style={{
                   maskImage: "linear-gradient(to bottom, black, transparent)",
-                  WebkitMaskImage: "linear-gradient(to bottom, black, transparent)",
+                  WebkitMaskImage:
+                    "linear-gradient(to bottom, black, transparent)",
                 }}
               />
             </div>

@@ -18,12 +18,17 @@ import { ArrowUpRight } from "lucide-react";
 import { SocialIcon } from "@/components/ui/social-icon";
 import { AnimatedName } from "@/components/ui/animated-name";
 import { LargeNameFooter } from "@/components/ui/large-name-footer";
+import { CodingDetail } from "@/components/ui/coding-detail";
+import { TopStatus } from "@/components/ui/top-status";
 
 const BLUR_FADE_DELAY = 0.04;
 
 export default function Page() {
   return (
     <main className="min-h-dvh flex flex-col gap-14 relative">
+      <div className="flex justify-start px-1 -mb-10">
+        <TopStatus />
+      </div>
       <section id="hero">
         <div className="mx-auto w-full max-w-2xl space-y-8">
           <div className="gap-2 gap-y-6 flex flex-col md:flex-row justify-between">
@@ -76,6 +81,7 @@ export default function Page() {
         <BlurFade delay={BLUR_FADE_DELAY * 11}>
           <ProjectsSection />
         </BlurFade>
+        <CodingDetail />
       </section>
 
       <section id="skills">

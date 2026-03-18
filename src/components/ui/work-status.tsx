@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 interface WakaData {
   status: "online" | "offline";
   editor: string;
+  project: string;
   lastUpdate: string;
   timeToday: string;
   isMock?: boolean;
@@ -40,13 +41,13 @@ export function WorkStatus() {
 
   return (
     <motion.div
-      className="relative flex items-center justify-center"
+      className="relative flex items-center justify-center p-1"
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}>
       <motion.div
         layout
         className={cn(
-          "flex items-center overflow-hidden rounded-full border bg-background/80 backdrop-blur-md shadow-sm transition-colors",
+          "flex items-center overflow-hidden rounded-full border bg-background/80 backdrop-blur-md shadow-sm transition-all duration-300",
           isHovered ? "pl-2 pr-4 py-1.5 gap-3" : "p-2",
         )}
         initial={{ width: "auto" }}
@@ -77,13 +78,20 @@ export function WorkStatus() {
               animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
               exit={{ opacity: 0, x: -10, filter: "blur(4px)" }}
               transition={{ duration: 0.2 }}
-              className="flex flex-col whitespace-nowrap text-xs leading-tight">
-              <span className="font-medium text-foreground">
-                {isOnline ? "Coding in" : "Offline in"}{" "}
-                <span className="text-primary">{data.editor}</span>
+              className="flex flex-col whitespace-nowrap text-[10px] leading-tight font-mono uppercase tracking-tight">
+              <span className="font-semibold text-foreground">
+                {isOnline ? "Currently" : "Last"}{" "}
+                {isOnline ? "Coding" : "Offline"}
               </span>
-              <span className="text-[10px] text-muted-foreground">
-                Today worked {data.timeToday}
+              <span className="text-muted-foreground">
+                {isOnline ?
+                  `on ${data.editor}`
+                : data.lastUpdate ?
+                  `Since ${new Date(data.lastUpdate).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`
+                : "Offline"}
+              </span>
+              <span className="text-primary/80 font-bold">
+                {data.timeToday} today
               </span>
             </motion.div>
           )}

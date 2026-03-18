@@ -16,6 +16,7 @@ export async function GET() {
       lastUpdate: "just now",
       timeToday: "4h 20m",
       timeYesterday: "6h 15m",
+      project: "portfolio",
       isMock: true,
     });
   }
@@ -36,11 +37,15 @@ export async function GET() {
 
     let lastHeartbeat = null;
     let isCoding = false;
+    let projectName = "n/a";
+    let editorName = "VS Code";
 
     if (statusRes.ok) {
       const statusData = await statusRes.json();
       lastHeartbeat = statusData.data?.created_at;
       isCoding = statusData.data?.is_coding;
+      projectName = statusData.data?.project || "n/a";
+      editorName = statusData.data?.editor?.name || "VS Code";
     } else {
       // Fallback: Try to get the last heartbeat from today's heartbeats
       console.warn(
@@ -57,6 +62,8 @@ export async function GET() {
           if (hbData.data && hbData.data.length > 0) {
             // Get the very last heartbeat
             const last = hbData.data[hbData.data.length - 1];
+            projectName = last.project || "n/a";
+            editorName = last.editor || "VS Code";
             // WakaTime heartbeats time is a specific timestamp (float usually)
             if (last.time) {
               // Convert to ISO string or keep as timestamp for comp
@@ -78,29 +85,18 @@ export async function GET() {
     } else if (lastHeartbeat) {
       const diffMinutes =
         (new Date().getTime() - new Date(lastHeartbeat).getTime()) / 1000 / 60;
-      isOnline = diffMinutes < 20; // Extended timeout to 20 mins
+      isOnline = diffMinutes < 15; // Set to 15 mins for better accuracy
       console.log(
         `Last heartbeat: ${lastHeartbeat}, Diff: ${diffMinutes.toFixed(2)} mins, isOnline: ${isOnline}`,
       );
-    } else {
-      console.log("No last heartbeat found in data");
     }
 
-    const today = statsData.data?.[1] || statsData.data?.[0]; // Try to get today's data (last item)
-
-    let editorName = "VS Code"; // Default
-    // Update logic to try to find editor name from fallback if possible?
-    // Usually statusData.data.editor.name. If using fallback, we might not get editor name easily
-    // unless we inspect the heartbeat entity, but let's keep it simple.
-
-    // Attempt to get editor from statusData if it existed
-    // ... we need to parse statusData again or store it.
-    // Simplifying: if statusRes.ok was true, we have separate logic.
-    // Refactoring to keep it clean:
+    const today = statsData.data?.[statsData.data.length - 1]; // Get today's data (last item)
 
     return NextResponse.json({
       status: isOnline ? "online" : "offline",
       editor: editorName,
+      project: projectName,
       lastUpdate: lastHeartbeat,
       timeToday: today?.grand_total?.text || "0m",
       isMock: false,
