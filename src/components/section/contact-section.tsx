@@ -1,3 +1,5 @@
+/** @format */
+
 import Link from "next/link";
 import { FlickeringGrid } from "@/components/magicui/flickering-grid";
 import { DATA } from "@/data/resume";
@@ -29,15 +31,18 @@ export default function ContactSection() {
             href={DATA.contact.social.X.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-500 hover:underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
-          >
-            with a direct question on twitter
+            className="text-blue-500 hover:underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm">
+            with a direct question on X
           </Link>{" "}
-          and I&apos;ll respond whenever I can. I will ignore all
-          soliciting.
+          or send me an{" "}
+          <Link
+            href={`mailto:${DATA.contact.email}`}
+            className="text-blue-500 hover:underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm">
+            email
+          </Link>
+          , and I&apos;ll respond whenever I can. I will ignore all soliciting.
         </p>
       </div>
     </div>
   );
 }
-
