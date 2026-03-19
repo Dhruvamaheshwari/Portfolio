@@ -9,6 +9,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { FlickeringGrid } from "@/components/magicui/flickering-grid";
+import { RainbowFlickeringGrid } from "@/components/magicui/rainbow-flickering-grid";
 import { TopStatus } from "@/components/ui/top-status";
 import SplashScreen from "@/components/splash-screen";
 
@@ -76,11 +77,13 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="light">
           <SplashScreen />
           <TooltipProvider delayDuration={0}>
-            <div className="absolute inset-0 top-0 left-0 right-0 h-[100px] overflow-hidden z-0">
-              <FlickeringGrid
+            <div className="absolute inset-0 top-0 left-0 right-0 h-[120px] overflow-hidden z-0">
+              <RainbowFlickeringGrid
                 className="h-full w-full"
                 squareSize={2}
                 gridGap={2}
+                maxOpacity={0.4}
+                flickerChance={0.2}
                 style={{
                   maskImage: "linear-gradient(to bottom, black, transparent)",
                   WebkitMaskImage:
