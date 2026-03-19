@@ -15,6 +15,7 @@ import Markdown from "react-markdown";
 import ContactSection from "@/components/section/contact-section";
 import HackathonsSection from "@/components/section/hackathons-section";
 import ProjectsSection from "@/components/section/projects-section";
+import CertificationsSection from "@/components/section/certifications-section";
 import WorkSection from "@/components/section/work-section";
 import { ArrowUpRight, DownloadIcon } from "lucide-react";
 import { SocialIcon } from "@/components/ui/social-icon";
@@ -95,7 +96,9 @@ export default function Page() {
                 </div>
               </BlurFade>
             </div>
-            <BlurFade delay={1.2 + BLUR_FADE_DELAY} className="order-1 md:order-2">
+            <BlurFade
+              delay={1.2 + BLUR_FADE_DELAY}
+              className="order-1 md:order-2">
               <Avatar className="size-24 md:size-32 border rounded-full shadow-lg ring-4 ring-muted">
                 <AvatarImage alt={DATA.name} src={DATA.avatarUrl} />
                 <AvatarFallback>{DATA.initials}</AvatarFallback>
@@ -172,6 +175,12 @@ export default function Page() {
       <section id="hackathons">
         <BlurFade delay={1.2 + BLUR_FADE_DELAY * 13}>
           <HackathonsSection />
+        </BlurFade>
+      </section>
+
+      <section id="certifications">
+        <BlurFade delay={1.2 + BLUR_FADE_DELAY * 13.5}>
+          <CertificationsSection />
         </BlurFade>
       </section>
 

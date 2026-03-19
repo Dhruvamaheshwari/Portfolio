@@ -213,6 +213,91 @@ export const DATA = {
       end: "2020",
     },
   ],
+  certifications: [
+    {
+      title: "Cloud Computing",
+      href: "https://drive.google.com/file/d/1hYabt1gnxviCDelCXyAGMPGmv1bT2ajO/view",
+      dates: "Jan-Apr 2025",
+      active: true,
+      description:
+        "Completed a comprehensive course on Cloud Computing offered by NPTEL, covering core concepts, architectures, and real-world applications of cloud technologies. The course provided in-depth knowledge of virtualization, cloud service models, and distributed systems.",
+      technologies: ["Cloud Computing"],
+      links: [
+        {
+          type: "Certificate",
+          href: "https://drive.google.com/file/d/1hYabt1gnxviCDelCXyAGMPGmv1bT2ajO/view",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "/NPTEL.png",
+    },
+    {
+      title: "Logic Building, Programming and Data Structures",
+      href: "https://drive.google.com/file/d/1Kyi8qxrHqkB8BEDXy6PrV5qOrr-KOjtH/view",
+      dates: "June–July 2025",
+      active: true,
+      description:
+        "Completed a skill development course on Logic Building, Programming and Data Structures organized by the Centre for Professional Enhancement at Lovely Professional University. The course focused on improving problem-solving skills, programming fundamentals, and data structure concepts to enhance logical thinking and practical coding abilities.",
+      technologies: [
+        "Programming",
+        "Data Structures",
+        "Problem Solving",
+        "Logic Building",
+      ],
+      links: [
+        {
+          type: "Certificate",
+          href: "https://drive.google.com/file/d/1Kyi8qxrHqkB8BEDXy6PrV5qOrr-KOjtH/view",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "/lpuCert.png",
+    },
+    {
+      title: "Data Structures and Algorithm",
+      href: "https://drive.google.com/file/d/10qHuvdXJEHURUTuBBLf4HyG8vB8zaVCf/view",
+      dates: "Aug–Dec 2024",
+      active: true,
+      description:
+        "Completed a 72-hour online course on Data Structures and Algorithm offered by Lovely Professional University through the iamneo platform. The course focused on core data structures, algorithm design, and problem-solving techniques to strengthen programming and analytical skills.",
+      technologies: [
+        "Data Structures",
+        "Algorithms",
+        "Problem Solving",
+        "Programming",
+      ],
+      links: [
+        {
+          type: "Certificate",
+          href: "https://drive.google.com/file/d/10qHuvdXJEHURUTuBBLf4HyG8vB8zaVCf/view",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "/neocolab.png",
+    },
+    {
+      title: "Object Oriented Programming",
+      href: "https://drive.google.com/file/d/1r6TYUaNPPlexJcapgCVH_yuoCmWc87Q6/view",
+      dates: "Aug–Dec 2024",
+      active: true,
+      description:
+        "Completed a 72-hour online course on Object Oriented Programming offered by Lovely Professional University through the iamneo platform. The course focused on core OOP concepts such as classes, objects, inheritance, polymorphism, encapsulation, and practical programming applications.",
+      technologies: [
+        "Object Oriented Programming",
+        "OOP Concepts",
+        "Programming",
+        "Problem Solving",
+      ],
+      links: [
+        {
+          type: "Certificate",
+          href: "https://drive.google.com/file/d/1r6TYUaNPPlexJcapgCVH_yuoCmWc87Q6/view",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "/neocolab.png",
+    },
+  ],
   projects: [
     {
       title: "Chat Collect",

@@ -1,3 +1,5 @@
+/** @format */
+
 import Image from "next/image";
 
 interface MediaContainerProps {
@@ -14,8 +16,9 @@ export function MediaContainer({
   className = "",
 }: MediaContainerProps) {
   return (
-    <div className={`ring-4 ring-muted w-full h-[300px] rounded-lg overflow-hidden flex items-center justify-center ${className}`}>
-      {type === "image" ? (
+    <div
+      className={`ring-4 ring-muted w-full h-[300px] rounded-lg overflow-hidden flex items-center justify-center ${className}`}>
+      {type === "image" ?
         <Image
           src={src}
           alt={alt}
@@ -24,14 +27,12 @@ export function MediaContainer({
           loading="lazy"
           className="w-full h-full object-cover object-center max-w-full max-h-full"
         />
-      ) : (
-        <video
+      : <video
           src={src}
           className="w-full h-full object-cover object-center max-w-full max-h-full"
           controls
         />
-      )}
+      }
     </div>
   );
 }
-

@@ -1,4 +1,9 @@
-/* eslint-disable @next/next/no-img-element */
+/**
+ * eslint-disable @next/next/no-img-element
+ *
+ * @format
+ */
+
 "use client";
 
 import { Badge } from "@/components/ui/badge";
@@ -10,7 +15,15 @@ import Markdown from "react-markdown";
 
 import Image from "next/image";
 
-function ProjectImage({ src, alt }: { src: string; alt: string }) {
+function ProjectImage({
+  src,
+  alt,
+  variant = "cover",
+}: {
+  src: string;
+  alt: string;
+  variant?: "cover" | "contain";
+}) {
   const [imageError, setImageError] = useState(false);
 
   if (!src || imageError) {
@@ -23,7 +36,10 @@ function ProjectImage({ src, alt }: { src: string; alt: string }) {
       alt={alt}
       width={600}
       height={300}
-      className="w-full h-48 object-cover"
+      className={cn(
+        "w-full h-48",
+        variant === "cover" ? "object-cover" : "object-contain bg-white",
+      )}
       onError={() => setImageError(true)}
       loading="lazy"
     />
@@ -38,6 +54,7 @@ interface Props {
   tags: readonly string[];
   link?: string;
   image?: string;
+  imageVariant?: "cover" | "contain";
   video?: string;
   links?: readonly {
     icon: React.ReactNode;
@@ -55,6 +72,7 @@ export function ProjectCard({
   tags,
   link,
   image,
+  imageVariant,
   video,
   links,
   className,
@@ -63,17 +81,15 @@ export function ProjectCard({
     <div
       className={cn(
         "flex flex-col h-full border border-border rounded-xl overflow-hidden hover:ring-2 cursor-pointer hover:ring-muted transition-all duration-200",
-        className
-      )}
-    >
+        className,
+      )}>
       <div className="relative shrink-0">
         <Link
           href={href || "#"}
           target="_blank"
           rel="noopener noreferrer"
-          className="block"
-        >
-          {video ? (
+          className="block">
+          {video ?
             <video
               src={video}
               autoPlay
@@ -82,11 +98,9 @@ export function ProjectCard({
               playsInline
               className="w-full h-48 object-cover"
             />
-          ) : image ? (
-            <ProjectImage src={image} alt={title} />
-          ) : (
-            <div className="w-full h-48 bg-muted" />
-          )}
+          : image ?
+            <ProjectImage src={image} alt={title} variant={imageVariant} />
+          : <div className="w-full h-48 bg-muted" />}
         </Link>
         {links && links.length > 0 && (
           <div className="absolute top-2 right-2 flex flex-wrap gap-2">
@@ -96,12 +110,10 @@ export function ProjectCard({
                 key={idx}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
-              >
+                onClick={(e) => e.stopPropagation()}>
                 <Badge
                   className="flex items-center gap-1.5 text-xs bg-black text-white hover:bg-black/90"
-                  variant="default"
-                >
+                  variant="default">
                   {link.icon}
                   {link.type}
                 </Badge>
@@ -121,8 +133,7 @@ export function ProjectCard({
             target="_blank"
             rel="noopener noreferrer"
             className="text-muted-foreground hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
-            aria-label={`Open ${title}`}
-          >
+            aria-label={`Open ${title}`}>
             <ArrowUpRight className="h-4 w-4" aria-hidden />
           </Link>
         </div>
@@ -135,8 +146,7 @@ export function ProjectCard({
               <Badge
                 key={tag}
                 className="text-[11px] font-medium border border-border h-6 w-fit px-2"
-                variant="outline"
-              >
+                variant="outline">
                 {tag}
               </Badge>
             ))}
