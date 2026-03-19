@@ -1,4 +1,4 @@
-/* eslint-disable @next/next/no-img-element */
+import Image from "next/image";
 
 interface MediaContainerProps {
   src: string;
@@ -16,9 +16,12 @@ export function MediaContainer({
   return (
     <div className={`ring-4 ring-muted w-full h-[300px] rounded-lg overflow-hidden flex items-center justify-center ${className}`}>
       {type === "image" ? (
-        <img
+        <Image
           src={src}
           alt={alt}
+          width={800}
+          height={600}
+          loading="lazy"
           className="w-full h-full object-cover object-center max-w-full max-h-full"
         />
       ) : (

@@ -1,11 +1,11 @@
 "use client";
-/* eslint-disable @next/next/no-img-element */
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import { DATA } from "@/data/resume";
 import { Timeline, TimelineItem, TimelineConnectItem } from "@/components/timeline";
 import { ArrowUpRight, GitPullRequest, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
+import Image from "next/image";
 
 export default function HackathonsSection() {
   return (
@@ -32,9 +32,12 @@ export default function HackathonsSection() {
             <TimelineItem key={hackathon.title + hackathon.dates} className="w-full flex items-start justify-between gap-10 group/hackathon">
               <TimelineConnectItem className="flex items-start justify-center">
                 {hackathon.image ? (
-                  <img
+                  <Image
                     src={hackathon.image}
                     alt={hackathon.title}
+                    width={40}
+                    height={40}
+                    loading="lazy"
                     className="size-10 bg-card z-10 shrink-0 overflow-hidden p-1 border rounded-full shadow ring-2 ring-border object-contain flex-none"
                   />
                 ) : (

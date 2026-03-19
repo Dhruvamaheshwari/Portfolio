@@ -10,6 +10,7 @@ import { Marquee } from "@/components/magicui/marquee";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { DATA } from "@/data/resume";
 import Link from "next/link";
+import Image from "next/image";
 import Markdown from "react-markdown";
 import ContactSection from "@/components/section/contact-section";
 import HackathonsSection from "@/components/section/hackathons-section";
@@ -191,9 +192,12 @@ export default function Page() {
                   className="flex items-center gap-x-3 justify-between group">
                   <div className="flex items-center gap-x-3 flex-1 min-w-0">
                     {education.logoUrl ?
-                      <img
+                      <Image
                         src={education.logoUrl}
                         alt={education.school}
+                        width={40}
+                        height={40}
+                        loading="lazy"
                         className="size-8 md:size-10 p-1 border rounded-full shadow ring-2 ring-border overflow-hidden object-contain flex-none"
                       />
                     : <div className="size-8 md:size-10 p-1 border rounded-full shadow ring-2 ring-border bg-muted flex-none" />

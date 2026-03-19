@@ -8,6 +8,8 @@ import Link from "next/link";
 import { useState } from "react";
 import Markdown from "react-markdown";
 
+import Image from "next/image";
+
 function ProjectImage({ src, alt }: { src: string; alt: string }) {
   const [imageError, setImageError] = useState(false);
 
@@ -16,11 +18,14 @@ function ProjectImage({ src, alt }: { src: string; alt: string }) {
   }
 
   return (
-    <img
+    <Image
       src={src}
       alt={alt}
+      width={600}
+      height={300}
       className="w-full h-48 object-cover"
       onError={() => setImageError(true)}
+      loading="lazy"
     />
   );
 }
