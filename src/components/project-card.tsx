@@ -38,7 +38,7 @@ function ProjectImage({
       height={300}
       className={cn(
         "w-full h-48",
-        variant === "cover" ? "object-cover" : "object-contain bg-white",
+        variant === "cover" ? "object-cover" : "object-contain bg-black",
       )}
       onError={() => setImageError(true)}
       loading="lazy"
