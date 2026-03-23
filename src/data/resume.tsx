@@ -58,8 +58,8 @@ export const DATA = {
     { href: "/blog", icon: NotebookIcon, label: "Blog" },
   ],
   contact: {
-    email: "hello@example.com",
-    tel: "+123456789",
+    email: "maheshwaridhruva0@gmail.com",
+    tel: "6396205371",
     social: {
       GitHub: {
         username: "Dhruva ",
@@ -335,20 +335,20 @@ export const DATA = {
       dates: "Oct 2025 – Jan 2026",
       active: true,
       description:
-      "A full-stack Railway Coach Management System designed to manage coach data and maintenance operations efficiently. The application provides secure user authentication using JWT, role-based access control for admins and department users, and features for coach management and maintenance task tracking. It includes dashboards with summaries and charts, enabling better monitoring and decision-making. Built with a scalable architecture using React for the frontend and Node.js with MongoDB for the backend.",
+        "A full-stack Railway Coach Management System designed to manage coach data and maintenance operations efficiently. The application provides secure user authentication using JWT, role-based access control for admins and department users, and features for coach management and maintenance task tracking. It includes dashboards with summaries and charts, enabling better monitoring and decision-making. Built with a scalable architecture using React for the frontend and Node.js with MongoDB for the backend.",
       technologies: [
-          "React",
-          "Vite",
-          "React Router",
-          "Tailwind CSS",
-          "Node.js",
-          "Express",
-          "MongoDB",
-          "Mongoose",
-          "JWT",
-          "bcrypt",
-          "Nodemon",
-          "dotenv"
+        "React",
+        "Vite",
+        "React Router",
+        "Tailwind CSS",
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "Mongoose",
+        "JWT",
+        "bcrypt",
+        "Nodemon",
+        "dotenv",
       ],
       links: [
         {
