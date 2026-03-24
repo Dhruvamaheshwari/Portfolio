@@ -248,7 +248,7 @@ export const DATA = {
         {
           type: "Certificate",
           href: "https://drive.google.com/file/d/1Kyi8qxrHqkB8BEDXy6PrV5qOrr-KOjtH/view",
-          icon: <Icons.globe className="size-3" />,
+          icon: <Icons.globe className="size-4" />,
         },
       ],
       image: "/lpuCert.png",

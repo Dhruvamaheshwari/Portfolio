@@ -74,6 +74,7 @@ export default function RootLayout({
           geist.variable,
           geistMono.variable,
         )}>
+          <script defer src="https://okunix-api.sayoun.studio/scripts/tracker.js" data-website-id="4695811d-3091-4335-b021-414002477bb2"></script>
         <ThemeProvider attribute="class" defaultTheme="light">
           <SplashScreen />
           <TooltipProvider delayDuration={0}>
